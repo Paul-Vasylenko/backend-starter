@@ -6,7 +6,7 @@ services:
           context: ./../
           dockerfile: Dockerfile
         container_name: joer-be
-        ports: [ '8000:8000', '3002:3002' ]
+        ports: [ '4000:4000', '3002:3002' ]
         depends_on: ['db']
         volumes:
           - ./../:/app
