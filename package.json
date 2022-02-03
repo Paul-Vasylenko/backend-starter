@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "ts-node-dev index.ts",
+    "start": "npm run docker:up && ts-node-dev --respawn --transpile-only index.ts",
     "docker:up": "docker-compose -f docker/docker-compose.yml --env-file ./.env --project-name joer up -d"
   },
   "repository": {

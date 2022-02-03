@@ -11,5 +11,8 @@
       "emitDecoratorMetadata": true,
       "target": "esnext",
       "moduleResolution": "Node",
-    }
+    },
+    "ts-node": {
+      "transpileOnly": true
+   },
   }

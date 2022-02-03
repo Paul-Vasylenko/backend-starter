@@ -3,7 +3,7 @@ import { initApi } from './src/api';
 import db from './src/db/init';
 
 const app = express();
-const PORT = process.env.APP_PORT ?? 4000
+const PORT = process.env.APP_PORT ?? 5000
 app.use('/api/v1', initApi())
 
 

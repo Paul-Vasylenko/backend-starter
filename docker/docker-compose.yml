@@ -1,17 +1,17 @@
 version: '3.3'
 
 services:
-    joer:
-        build: 
-          context: ./../
-          dockerfile: Dockerfile
-        container_name: joer-be
-        ports: [ '4000:4000', '3002:3002' ]
-        depends_on: ['db']
-        volumes:
-          - ./../:/app
-        command: sh -c "npm i && npm start"
-        tty: true
+    # joer:
+    #     build: 
+    #       context: ./../
+    #       dockerfile: Dockerfile
+    #     container_name: joer-be
+    #     ports: [ '5000:4000', '3002:3002' ]
+    #     depends_on: ['db']
+    #     # volumes:
+    #     #   - ./../:/app
+    #     command: sh -c "npm i && npm start"
+    #     tty: true
     db:
         image: postgres
         restart: always
@@ -19,3 +19,8 @@ services:
         env_file:
           - ./../.env
         container_name: joer-db
+    # adminer:
+    #     image: adminer
+    #     restart: always
+    #     ports:
+    #         - 8080:8080
