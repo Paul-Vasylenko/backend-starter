@@ -1,0 +1,21 @@
+version: '3.3'
+
+services:
+    joer:
+        build: 
+          context: ./../
+          dockerfile: Dockerfile
+        container_name: joer-be
+        ports: [ '8000:8000', '3002:3002' ]
+        depends_on: ['db']
+        volumes:
+          - ./../:/app
+        command: sh -c "npm i && npm start"
+        tty: true
+    db:
+        image: postgres
+        restart: always
+        ports: ['5432:5432']
+        env_file:
+          - ./../.env
+        container_name: joer-db
