@@ -18,7 +18,7 @@ let sequelize = process.env.NODE_ENV==="production" ?
 
 const db = {
    "Sequelize":  Sequelize,
-   sequelize
+   sequelize,
 }
 
 export default db;
