@@ -5,17 +5,20 @@ const {
     POSTGRES_NAME,
     POSTGRES_USER,
     POSTGRES_HOST,
-    POSTGRES_DIALECT,
-    POSTGRES_PASSWORD
+    POSTGRES_PASSWORD,
+    POSTGRES_PORT
     } = dbConfig;
 
-const sequelize = new Sequelize(POSTGRES_NAME, POSTGRES_USER, POSTGRES_PASSWORD, {
-    host: POSTGRES_HOST,
-    dialect: POSTGRES_DIALECT
-})
+const connectionString = `postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_NAME}`;
 
-const db: any = {}
-db.Sequelize = Sequelize;
-db.sequelize = sequelize;
+let sequelize = process.env.NODE_ENV==="production" ? 
+    new Sequelize(process.env.DATABASE_URL || "") // comes from heroku
+    :
+    new Sequelize(connectionString);
+
+const db = {
+   "Sequelize":  Sequelize,
+   sequelize
+}
 
 export default db;
